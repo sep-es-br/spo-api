@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Objeto extends Entidade implements Serializable {
     
     private String nome;
@@ -16,6 +18,18 @@ public class Objeto extends Entidade implements Serializable {
     private int openPMOId;
     private String status;
 
-    private List<Conta> contas;
+    private Conta contaCusteada;
+    private List<Custo> custosEstimadores;
+
+    public Objeto(String nome, String tipo, Conta contaCusteada) {
+        this.nome = nome;
+        this.tipo = tipo;
+        this.setContaCusteada(contaCusteada);
+    }
+
+    public void setContaCusteada(Conta conta){
+        conta.getObjetosCusteadores().add(this);
+        this.contaCusteada = conta;
+    }
 
 }

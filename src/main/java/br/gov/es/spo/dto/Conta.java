@@ -10,9 +10,9 @@ import lombok.Setter;
 @Setter
 public class Conta extends Entidade implements Serializable {
     private String status;
+    private String nome;
 
-    private List<Objeto> objetos;
-    private List<ExecucaoOrcamentaria> execucoesOrcamentaria;
-    
+    private List<Objeto> objetosCusteadores;
+    private List<ExecucaoOrcamentaria> execucoesOrcamentariaDelimitadores;
 
 }
