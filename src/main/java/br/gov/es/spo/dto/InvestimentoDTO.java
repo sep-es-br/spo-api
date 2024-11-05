@@ -17,6 +17,9 @@ public class InvestimentoDTO {
     private Double totalPrevisto;
     private Double totalHomologado;
     private Double totalOrcado;
+    private Double totalAutorizado;
+    private Double totalDisponivel;
+    
 
     private List<ObjetoDTO> objetos;
     
@@ -29,5 +32,21 @@ public class InvestimentoDTO {
             return new ObjetoDTO(objeto);
         }).collect(Collectors.toList());
 
+        this.totalPrevisto = 0d;
+        this.totalHomologado = 0d;
+        this.totalOrcado = 0d;
+        this.totalAutorizado = 0d;
+        this.totalDisponivel = 0d;
+
+        this.objetos.forEach(obj -> {
+            this.totalPrevisto += obj.getTotalPrevisto();
+            this.totalHomologado += obj.getTotalOrcado();
+            this.totalOrcado += obj.getTotalOrcado();
+            this.totalAutorizado += obj.getTotalAutorizado();
+            this.totalDisponivel += obj.getTotalDisponivel();
+        });
+
     }
+
+    
 }

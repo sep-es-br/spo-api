@@ -47,6 +47,8 @@ public class DataMock {
             invNovoFundo, invCentroEvento, invProjResso, invArcoViario,
             invCarroTransp
         ) );
+        
+
 
         ExecucaoOrcamentaria execucaoAquisicao2025F1 = new ExecucaoOrcamentaria("2025", 4377049d, 0, null, invAquisicaoDeFrotas);
         ExecucaoOrcamentaria execucaoAquisicao2025F2 = new ExecucaoOrcamentaria("2025", 4377049d, 0, null, invAquisicaoDeFrotas);
@@ -168,7 +170,9 @@ public class DataMock {
             Arrays.asList(
                 planoAquisicaoFrota
             ), 
-            Arrays.asList());
+            Arrays.asList(
+                execucaoAquisicao2025F1
+            ));
 
         UnidadeOrcamentaria uniPMES = new UnidadeOrcamentaria(45103l, "PMES", 
             Arrays.asList(
@@ -181,7 +185,9 @@ public class DataMock {
             Arrays.asList(
                 planoAquisicaoFrota
             ),
-            Arrays.asList());
+            Arrays.asList(
+                execucaoAquisicao2025F1
+            ));
         UnidadeOrcamentaria uniFUNREBOM = new UnidadeOrcamentaria(45904l, "FUNREBOM", 
             Arrays.asList(
                 planoAquisicaoFrota
@@ -191,7 +197,9 @@ public class DataMock {
             Arrays.asList(
                 planoAquisicaoFrota, planoModeResso
             ), 
-            Arrays.asList());
+            Arrays.asList(
+                execucaoAquisicao2025F1, execucaoModeResso2025F1
+            ));
         UnidadeOrcamentaria uniPRODEST = new UnidadeOrcamentaria(28203l, "PRODEST", 
             Arrays.asList( planoEsDigital ), 
             Arrays.asList( execucaoEsDigital )
@@ -219,7 +227,7 @@ public class DataMock {
 
         UnidadeOrcamentaria uniFEAC = new UnidadeOrcamentaria(31901l, "FEAC",
             Arrays.asList(planoObras),
-            Arrays.asList());
+            Arrays.asList(execucaoObras2025F1));
 
         UnidadeOrcamentaria uniSESPORT = new UnidadeOrcamentaria(39101l, "SESPORT",
             Arrays.asList(planoCentroExce, planoConstrCampo),
@@ -251,7 +259,7 @@ public class DataMock {
 
         UnidadeOrcamentaria uniFTP = new UnidadeOrcamentaria(46901l, "FTP",
             Arrays.asList(planoProjResso),
-            Arrays.asList());
+            Arrays.asList(execucaoProjResso2025F2));
 
         UnidadeOrcamentaria uniFUNPEN = new UnidadeOrcamentaria(46903l, "FUNPEN",
             Arrays.asList(planoProjResso),
@@ -265,7 +273,9 @@ public class DataMock {
             uniPCES, uniPMES, uniPCIES, uniFUNREBOM, uniSEDH, uniPRODEST, uniSEDU,
             uniSEDURB, uniSECULT, uniDERES, uniSEAG, uniFEAC, uniSESPORT, uniPROESPORTE,
             uniSEJUS, uniPPES, uniIEMA, uniFUNDEMA, uniFEADM, uniFTP, uniFUNPEN, uniSCM
-        ));        
+        ));
+
+
 
         Objeto objAquiFrot1 = new Objeto("AQUISIÇÃO DE FROTAS", "Entrega", invAquisicaoDeFrotas);
         Objeto objAquiFrot2 = new Objeto("Aquisição de frota", "Entrega", invAquisicaoDeFrotas);
@@ -405,7 +415,7 @@ public class DataMock {
             custoArcoViario2025F1, custoCarroTransp2025F1
         ));
 
-        FonteOrcamentaria fonte1 = new FonteOrcamentaria("Fonte 1",
+        FonteOrcamentaria fonte1 = new FonteOrcamentaria(0l,"Fonte 1",
             Arrays.asList(
                 custoObj12025, custoObj22025, custoObj32025, custoObj42025,
                 custoObj12026, custoObj22026, custoObj32026, custoObj42026,
@@ -427,7 +437,7 @@ public class DataMock {
                 execucaoCentroEvento2025F1, execucaoArcoViario2025F1, execucaoEsDigital
             )
         );
-        FonteOrcamentaria fonte2 = new FonteOrcamentaria("Fonte 2",
+        FonteOrcamentaria fonte2 = new FonteOrcamentaria(1l, "Fonte 2",
             Arrays.asList( 
                 custoObjImpl2025, custoObjImpl2026, custoObjImpl2027, custoCentroExce22025F2,
                 custoConstrCampo2025F2
@@ -436,7 +446,173 @@ public class DataMock {
         
         noFonteOrcamentarias.addAll(Arrays.asList(fonte1, fonte2));
 
+
+
         populado = true;
+
+    }
+
+
+
+    public static void popular2(){
+
+        // Investimentos
+        Investimento invAquisicaoDeFrotas = Investimento.criar("Aquisição de Frotas");
+        Investimento invEsDigital = Investimento.criar("ES DIGITAL");
+        Investimento invMacrodrenagem = Investimento.criar("EXECUÇÃO DAS OBRAS DE MACRODRENAGEM DA BACIA DO CÓRREGO RIBEIRA.");
+        Investimento invCaisArtes = Investimento.criar("Cais das Artes");
+        Investimento invSinalizacoes = Investimento.criar("SINALIZAÇÕES DAS RODOVIAS ESTADUAIS - DER-ES");
+        Investimento invObras = Investimento.criar("Obras e Supervisão do Caminhos do Campo");
+        Investimento invCentroExce = Investimento.criar("CONSTRUÇÃO DO CENTRO DE EXCELÊNCIA DE ESPORTES");
+        Investimento invModeResso = Investimento.criar("MODERNIZAÇÃO DO PROCESSO DE RESSOCIALIZAÇÃO");
+        Investimento invGestaoBens = Investimento.criar("GESTÃO DE BENS PATRIMONIAIS");
+        Investimento invIEMA = Investimento.criar("IEMA Digital");
+        Investimento invGestaoEspaco = Investimento.criar("GESTÃO ESPAÇOS CULTURAIS E SEDE SECULT");
+        Investimento invProjetosEspaciais = Investimento.criar("PROJETOS ESPECIAIS DO CONTRATO DE GESTÃO");
+        Investimento invConstrCampo = Investimento.criar("CONSTRUÇÃO DE CAMPO BOM DE BOLA");
+        Investimento invNovoFundo = Investimento.criar("NOVO FUNDO CIDADES");
+        Investimento invCentroEvento = Investimento.criar("CENTRO DE EVENTOS DO MORANGÃO");
+        Investimento invProjResso = Investimento.criar("PROJETOS DE RESSOCIALIZAÇÃO");
+        Investimento invArcoViario = Investimento.criar("ARCO VIÁRIO DE COLATINA COM 4º PONTE");
+        Investimento invCarroTransp = Investimento.criar("CARRO DE TRANSPORTE DE AERONAVES");
+
+        // Unidades Orçamentarias
+        UnidadeOrcamentaria uniPCES = UnidadeOrcamentaria.criar(45102l, "PCES");
+        UnidadeOrcamentaria uniPMES = UnidadeOrcamentaria.criar(45103l, "PMES");
+        UnidadeOrcamentaria uniPCIES = UnidadeOrcamentaria.criar(45107l, "PCIES");
+        UnidadeOrcamentaria uniFUNREBOM = UnidadeOrcamentaria.criar(45904l, "FUNREBOM");
+        UnidadeOrcamentaria uniSEDH = UnidadeOrcamentaria.criar(48101l, "SEDH");
+        UnidadeOrcamentaria uniPRODEST = UnidadeOrcamentaria.criar(28203l, "PRODEST");
+        UnidadeOrcamentaria uniSEDU = UnidadeOrcamentaria.criar(42101l, "SEDU");
+        UnidadeOrcamentaria uniSEDURB = UnidadeOrcamentaria.criar(36101l, "SEDURB");
+        UnidadeOrcamentaria uniSECULT = UnidadeOrcamentaria.criar(40101l, "SECULT");
+        UnidadeOrcamentaria uniDERES = UnidadeOrcamentaria.criar(35201l, "DER-ES");
+        UnidadeOrcamentaria uniSEAG = UnidadeOrcamentaria.criar(31101l, "SEAG");
+        UnidadeOrcamentaria uniFEAC = UnidadeOrcamentaria.criar(31901l, "FEAC");
+        UnidadeOrcamentaria uniSESPORT = UnidadeOrcamentaria.criar(39101l, "SESPORT");
+        UnidadeOrcamentaria uniPROESPORTE = UnidadeOrcamentaria.criar(39901l, "PRÓ-ESPORTE");
+        UnidadeOrcamentaria uniSEJUS = UnidadeOrcamentaria.criar(46101l, "SEJUS");
+        UnidadeOrcamentaria uniPPES = UnidadeOrcamentaria.criar(46113l, "PPES");
+        UnidadeOrcamentaria uniIEMA = UnidadeOrcamentaria.criar(41201l, "IEMA");
+        UnidadeOrcamentaria uniFUNDEMA = UnidadeOrcamentaria.criar(41901l, "FUNDEMA");
+        UnidadeOrcamentaria uniFEADM = UnidadeOrcamentaria.criar(10906l, "FEADM");
+        UnidadeOrcamentaria uniFTP = UnidadeOrcamentaria.criar(46901l, "FTP");
+        UnidadeOrcamentaria uniFUNPEN = UnidadeOrcamentaria.criar(46903l, "FUNPEN");
+        UnidadeOrcamentaria uniSCM = UnidadeOrcamentaria.criar(10102l, "SCM");
+
+        // Planos Orcamentarios
+        PlanoOrcamentario planoAquisicaoFrota = PlanoOrcamentario.criar(831l, "AQUISIÇÃO DE FROTAS");
+        PlanoOrcamentario planoEsDigital = PlanoOrcamentario.criar(1022l, "ES DIGITAL");
+        PlanoOrcamentario planoDrenagem = PlanoOrcamentario.criar(1083l, "EXECUÇÃO DAS OBRAS DE MACRODRENAGEM DA BACIA DO CÓRREGO RIBEIRA.");
+        PlanoOrcamentario planoCaisArtes = PlanoOrcamentario.criar(1242l, "Cais das Artes");
+        PlanoOrcamentario planoSinalizacao = PlanoOrcamentario.criar(1213l, "SINALIZAÇÕES DAS RODOVIAS ESTADUAIS - DER-ES");
+        PlanoOrcamentario planoObras = PlanoOrcamentario.criar(1870l, "Obras e Supervisão do Caminhos do Campo");
+        PlanoOrcamentario planoCentroExce = PlanoOrcamentario.criar(2118l, "CONSTRUÇÃO DO CENTRO DE EXCELÊNCIA DE ESPORTES");
+        PlanoOrcamentario planoModeResso = PlanoOrcamentario.criar(2120l, "MODERNIZAÇÃO DO PROCESSO DE RESSOCIALIZAÇÃO");
+        PlanoOrcamentario planoGestaoBens = PlanoOrcamentario.criar(2131l, "GESTÃO DE BENS PATRIMONIAIS");
+        PlanoOrcamentario planoIEMA = PlanoOrcamentario.criar(2156l, "IEMA Digital");
+        PlanoOrcamentario planoGestaoEspaco = PlanoOrcamentario.criar(2184l, "GESTÃO ESPAÇOS CULTURAIS E SEDE SECULT");
+        PlanoOrcamentario planoProjEspaciais = PlanoOrcamentario.criar(2278l, "PROJETOS ESPECIAIS DO CONTRATO DE GESTÃO");
+        PlanoOrcamentario planoConstrCampo = PlanoOrcamentario.criar(2321l, "CONSTRUÇÃO DE CAMPO BOM DE BOLA");
+        PlanoOrcamentario planoNovoFundo = PlanoOrcamentario.criar(2344l, "NOVO FUNDO CIDADES");
+        PlanoOrcamentario planoCentroEventos = PlanoOrcamentario.criar(2355l, "CENTRO DE EVENTOS DO MORANGÃO");
+        PlanoOrcamentario planoProjResso = PlanoOrcamentario.criar(2381l, "PROJETOS DE RESSOCIALIZAÇÃO");
+        PlanoOrcamentario planoArcoViario = PlanoOrcamentario.criar(2414l, "ARCO VIÁRIO DE COLATINA COM 4º PONTE");
+        PlanoOrcamentario planoCarroTransp = PlanoOrcamentario.criar(2423l, "CARRO DE TRANSPORTE DE AERONAVES");
+
+        //Relação PO -> UO
+        planoAquisicaoFrota.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniPCES, uniPMES, uniPCIES, uniFUNREBOM, uniSEDH
+        ));
+
+        planoEsDigital.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniPRODEST, uniSEDU
+        ));
+
+        planoDrenagem.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSEDURB
+        ));
+
+        planoCaisArtes.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSECULT
+        ));
+
+        planoSinalizacao.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniDERES
+        ));
+
+        planoObras.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSEAG, uniFEAC
+        ));
+
+        planoCentroExce.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSESPORT, uniPROESPORTE
+        ));
+
+        planoModeResso.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSEDH
+        ));
+
+        planoGestaoBens.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSEJUS, uniPPES
+        ));
+
+        planoIEMA.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniIEMA, uniFUNDEMA
+        ));
+
+        planoGestaoEspaco.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSECULT
+        ));
+
+        planoProjEspaciais.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSEJUS
+        ));
+
+        planoConstrCampo.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSESPORT
+        ));
+
+        planoNovoFundo.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniFEADM
+        ));
+
+        planoCentroEventos.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSEAG
+        ));
+
+        planoProjResso.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSEJUS, uniFTP, uniFUNPEN
+        ));
+
+        planoArcoViario.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniDERES
+        ));
+
+        planoCarroTransp.getUnidadesOrcamentariaControladoras().addAll(Arrays.asList(
+            uniSCM
+        ));
+
+        // execuções Conta -> PO
+
+        List<ExecucaoOrcamentaria> execucoesAquisicao = ExecucaoOrcamentaria.gerarExecucoes(planoAquisicaoFrota, invAquisicaoDeFrotas);
+        List<ExecucaoOrcamentaria> execucoesEsDigital = ExecucaoOrcamentaria.gerarExecucoes(planoEsDigital, invEsDigital);
+        List<ExecucaoOrcamentaria> execucoesMacrodrenagem = ExecucaoOrcamentaria.gerarExecucoes(planoDrenagem, invMacrodrenagem);
+        List<ExecucaoOrcamentaria> execucoesCaisArte = ExecucaoOrcamentaria.gerarExecucoes(planoCaisArtes, invCaisArtes);
+        List<ExecucaoOrcamentaria> execucoesSinalizacao = ExecucaoOrcamentaria.gerarExecucoes(planoSinalizacao, invSinalizacoes);
+        List<ExecucaoOrcamentaria> execucoesObras = ExecucaoOrcamentaria.gerarExecucoes(planoObras, invObras);
+        List<ExecucaoOrcamentaria> execucoesConstCentroExce = ExecucaoOrcamentaria.gerarExecucoes(planoCentroExce, invCentroExce);
+        List<ExecucaoOrcamentaria> execucoesModerResso = ExecucaoOrcamentaria.gerarExecucoes(planoModeResso, invModeResso);
+        List<ExecucaoOrcamentaria> execucoesGestaoBens = ExecucaoOrcamentaria.gerarExecucoes(planoGestaoBens, invGestaoBens);
+        List<ExecucaoOrcamentaria> execucoesGestaoEspaco = ExecucaoOrcamentaria.gerarExecucoes(planoGestaoEspaco, invGestaoEspaco);
+        List<ExecucaoOrcamentaria> execucoesIEMA = ExecucaoOrcamentaria.gerarExecucoes(planoIEMA, invIEMA);
+        List<ExecucaoOrcamentaria> execucoesConstrCampo = ExecucaoOrcamentaria.gerarExecucoes(planoConstrCampo, invConstrCampo);
+        List<ExecucaoOrcamentaria> execucoesProjEspaciais = ExecucaoOrcamentaria.gerarExecucoes(planoProjEspaciais, invProjetosEspaciais);
+        List<ExecucaoOrcamentaria> execucoesNovoFundo = ExecucaoOrcamentaria.gerarExecucoes(planoNovoFundo, invNovoFundo);
+        List<ExecucaoOrcamentaria> execucoesCentroEventos = ExecucaoOrcamentaria.gerarExecucoes(planoCentroEventos, invCentroEvento);
+        List<ExecucaoOrcamentaria> execucoesProjResso = ExecucaoOrcamentaria.gerarExecucoes(planoProjResso, invProjResso);
+        List<ExecucaoOrcamentaria> execucoesArcoViario = ExecucaoOrcamentaria.gerarExecucoes(planoArcoViario, invArcoViario);
+        List<ExecucaoOrcamentaria> execucoesCarroTransp = ExecucaoOrcamentaria.gerarExecucoes(planoCarroTransp, invCarroTransp);
 
     }
 
