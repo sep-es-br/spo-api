@@ -26,6 +26,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,22 +73,14 @@ public class SecurityFilter extends OncePerRequestFilter {
             try {
                 String subject = tokenService.validarToken(token);
 
-                // List<String> roles = tokenService.getRoleFromToken(token);
+                List<String> roles = tokenService.getRoleFromToken(token);
 
-                // HashMap<String, String> moduloPermissao = new HashMap<>();
-                // moduloPermissao.put("/capitation", papelCapitacao);
+                if(!roles.contains("GESTOR_MASTER")) {
+                    enviarMensagemErro(Arrays.asList("Acesso negado, sem permissão nescessaria"), response, HttpStatus.FORBIDDEN);
+                    return;
+                }
 
-                // for(Map.Entry<String,String> entry : moduloPermissao.entrySet()){
-                //     if(request.getRequestURI().contains(entry.getKey()) && 
-                //         !checarPermissao(papelGeral, roles) &&
-                //         !checarPermissao(entry.getValue(), roles)){
-                //         enviarMensagemErro(List.of("Este usuario não tem acesso a este módulo (" + entry.getKey() + "). Acesso negado. "), response, HttpStatus.UNAUTHORIZED);
-                //         return;
-                //     }
-                // } 
-
-                // SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + roles);
-                SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_MASTER");
+                SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + roles);
 
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         subject, null, List.of(authority));

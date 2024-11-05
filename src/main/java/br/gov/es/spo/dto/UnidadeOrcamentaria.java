@@ -1,5 +1,6 @@
 package br.gov.es.spo.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
@@ -15,8 +16,8 @@ public class UnidadeOrcamentaria {
     private String sigla;
     private String nome;
 
-    private List<PlanoOrcamentario> planosOrcamentariosControlados;
-    private List<ExecucaoOrcamentaria> execucaoOrcamentariasImplementadas;
+    private ArrayList<PlanoOrcamentario> planosOrcamentariosControlados = new ArrayList<>();
+    private ArrayList<ExecucaoOrcamentaria> execucaoOrcamentariasImplementadas = new ArrayList<>();
 
     public UnidadeOrcamentaria(Long codigo, String sigla, List<PlanoOrcamentario> planoOrcamentarios, List<ExecucaoOrcamentaria> execucoes) {
         this.codigo = codigo;

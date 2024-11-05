@@ -1,6 +1,7 @@
 package br.gov.es.spo.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,8 +18,8 @@ public class FonteOrcamentaria implements Serializable {
     private String nome;
     private String descricao;
 
-    private List<Custo> custosIndicados;
-    private List<ExecucaoOrcamentaria> execucoesOrcamentariaVinculadas;
+    private ArrayList<Custo> custosIndicados = new ArrayList<>();
+    private ArrayList<ExecucaoOrcamentaria> execucoesOrcamentariaVinculadas = new ArrayList<>();
 
     
 

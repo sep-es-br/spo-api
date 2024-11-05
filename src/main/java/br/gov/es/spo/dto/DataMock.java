@@ -1,5 +1,6 @@
 package br.gov.es.spo.dto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
@@ -10,13 +11,13 @@ public class DataMock {
 
     public static boolean populado = false;
 
-    public static List<Custo> noCustos;
-    public static List<Objeto> noObjetos;
-    public static List<Investimento> noInvestimentos;
-    public static List<ExecucaoOrcamentaria> noExecucaoOrcamentarias;
-    public static List<PlanoOrcamentario> noPlanoOrcamentarios;
-    public static List<UnidadeOrcamentaria> noUnidadeOrcamentarias;
-    public static List<FonteOrcamentaria> noFonteOrcamentarias;
+    public static ArrayList<Custo> noCustos = new ArrayList<>();
+    public static ArrayList<Objeto> noObjetos = new ArrayList<>();
+    public static ArrayList<Investimento> noInvestimentos = new ArrayList<>();
+    public static ArrayList<ExecucaoOrcamentaria> noExecucaoOrcamentarias = new ArrayList<>();
+    public static ArrayList<PlanoOrcamentario> noPlanoOrcamentarios = new ArrayList<>();
+    public static ArrayList<UnidadeOrcamentaria> noUnidadeOrcamentarias = new ArrayList<>();
+    public static ArrayList<FonteOrcamentaria> noFonteOrcamentarias = new ArrayList<>();
 
     public static void popularMock(){
 
@@ -50,18 +51,28 @@ public class DataMock {
         ExecucaoOrcamentaria execucaoAquisicao2025F1 = new ExecucaoOrcamentaria("2025", 4377049d, 0, null, invAquisicaoDeFrotas);
         ExecucaoOrcamentaria execucaoAquisicao2025F2 = new ExecucaoOrcamentaria("2025", 4377049d, 0, null, invAquisicaoDeFrotas);
 
+        ExecucaoOrcamentaria execucaoEsDigital = new ExecucaoOrcamentaria("2025", 0, 0, null, invEsDigital);
+
+        ExecucaoOrcamentaria execucaoMacrodrenagem = new ExecucaoOrcamentaria("2025", 0, 0, null, invMacrodrenagem);
+
         ExecucaoOrcamentaria execucaoCais2025F1 = new ExecucaoOrcamentaria("2025", 216000000d, 0, null, invCaisArtes);
 
         ExecucaoOrcamentaria execucaoSinalizacao2025F2 = new ExecucaoOrcamentaria("2025", 34800000d, 0, null, invSinalizacoes);
 
         ExecucaoOrcamentaria execucaoObras2025F1 = new ExecucaoOrcamentaria("2025", 372481632d, 0, null, invObras);
 
+        ExecucaoOrcamentaria execucaoCentroExce = new ExecucaoOrcamentaria("2025", 0, 0, null, invCentroExce);
+
         ExecucaoOrcamentaria execucaoModeResso2025F1 = new ExecucaoOrcamentaria("2025", 2111050, 0, null, invModeResso);
 
         ExecucaoOrcamentaria execucaoGestaoBens12025F1 = new ExecucaoOrcamentaria("2025", 14663926, 0, null, invGestaoBens);
         ExecucaoOrcamentaria execucaoGestaoBens22025F1 = new ExecucaoOrcamentaria("2025", 645671, 0, null, invGestaoBens);
 
+        ExecucaoOrcamentaria execucaoIEMA = new ExecucaoOrcamentaria("2025", 0, 0, null, invIEMA);
+
         ExecucaoOrcamentaria execucaoGestaoEspaco12025F1 = new ExecucaoOrcamentaria("2025", 3900000, 0, null, invGestaoEspaco);
+
+        ExecucaoOrcamentaria execucaoProjetosEspaciais = new ExecucaoOrcamentaria("2025", 0, 0, null, invProjetosEspaciais);
 
         ExecucaoOrcamentaria execucaoConstrCampo2025F1 = new ExecucaoOrcamentaria("2025", 50000, 0, null, invConstrCampo);
 
@@ -73,12 +84,14 @@ public class DataMock {
 
         ExecucaoOrcamentaria execucaoArcoViario2025F1 = new ExecucaoOrcamentaria("2025", 250000, 0, null, invArcoViario);
 
+        ExecucaoOrcamentaria execucaoCarroTransp = new ExecucaoOrcamentaria("2025", 0, 0, null, invCarroTransp);
+
         noExecucaoOrcamentarias.addAll(Arrays.asList(
                 execucaoAquisicao2025F1, execucaoAquisicao2025F2, execucaoCais2025F1,
                 execucaoSinalizacao2025F2, execucaoObras2025F1, execucaoModeResso2025F1,
                 execucaoGestaoBens12025F1, execucaoGestaoBens22025F1, execucaoGestaoEspaco12025F1,
                 execucaoConstrCampo2025F1, execucaoNovoFundo2025F1, execucaoCentroEvento2025F1,
-                execucaoProjResso2025F2, execucaoArcoViario2025F1
+                execucaoProjResso2025F2, execucaoArcoViario2025F1, execucaoEsDigital, execucaoMacrodrenagem
             ));
 
         PlanoOrcamentario planoAquisicaoFrota = new PlanoOrcamentario(831l, "AQUISIÇÃO DE FROTAS",
@@ -86,9 +99,9 @@ public class DataMock {
             execucaoAquisicao2025F1, execucaoAquisicao2025F2
         ));
 
-        PlanoOrcamentario planoEsDigital = new PlanoOrcamentario(1022l, "ES DIGITAL", Arrays.asList());
+        PlanoOrcamentario planoEsDigital = new PlanoOrcamentario(1022l, "ES DIGITAL", Arrays.asList(execucaoEsDigital));
 
-        PlanoOrcamentario planoDrenagem = new PlanoOrcamentario(1083l, "EXECUÇÃO DAS OBRAS DE MACRODRENAGEM DA BACIA DO CÓRREGO RIBEIRA.",  Arrays.asList());
+        PlanoOrcamentario planoDrenagem = new PlanoOrcamentario(1083l, "EXECUÇÃO DAS OBRAS DE MACRODRENAGEM DA BACIA DO CÓRREGO RIBEIRA.",  Arrays.asList(execucaoMacrodrenagem));
 
         PlanoOrcamentario planoCaisArtes = new PlanoOrcamentario(1242l, "Cais das Artes", Arrays.asList(execucaoCais2025F1));
 
@@ -98,7 +111,7 @@ public class DataMock {
         PlanoOrcamentario planoObras = new PlanoOrcamentario(1870l, "Obras e Supervisão do Caminhos do Campo",
             Arrays.asList(execucaoObras2025F1));
 
-        PlanoOrcamentario planoCentroExce = new PlanoOrcamentario(2118l, "CONSTRUÇÃO DO CENTRO DE EXCELÊNCIA DE ESPORTES", Arrays.asList());
+        PlanoOrcamentario planoCentroExce = new PlanoOrcamentario(2118l, "CONSTRUÇÃO DO CENTRO DE EXCELÊNCIA DE ESPORTES", Arrays.asList(execucaoCentroExce));
 
         PlanoOrcamentario planoModeResso = new PlanoOrcamentario(2120l, "MODERNIZAÇÃO DO PROCESSO DE RESSOCIALIZAÇÃO",
             Arrays.asList(execucaoModeResso2025F1)
@@ -108,14 +121,14 @@ public class DataMock {
             Arrays.asList( execucaoGestaoBens12025F1, execucaoGestaoBens22025F1 )
         );
 
-        PlanoOrcamentario planoIEMA = new PlanoOrcamentario(2156l, "IEMA Digital", Arrays.asList());
+        PlanoOrcamentario planoIEMA = new PlanoOrcamentario(2156l, "IEMA Digital", Arrays.asList(execucaoIEMA));
 
         PlanoOrcamentario planoGestaoEspaco = new PlanoOrcamentario(2184l, "GESTÃO ESPAÇOS CULTURAIS E SEDE SECULT",
             Arrays.asList(execucaoGestaoEspaco12025F1)
         );
 
         PlanoOrcamentario planoProjEspaciais = new PlanoOrcamentario(2278l, "PROJETOS ESPECIAIS DO CONTRATO DE GESTÃO",
-            Arrays.asList()
+            Arrays.asList(execucaoProjetosEspaciais)
         );
 
         PlanoOrcamentario planoConstrCampo = new PlanoOrcamentario(2321l, "CONSTRUÇÃO DE CAMPO BOM DE BOLA",
@@ -139,7 +152,7 @@ public class DataMock {
         );
 
         PlanoOrcamentario planoCarroTransp = new PlanoOrcamentario(2423l, "CARRO DE TRANSPORTE DE AERONAVES", 
-            Arrays.asList()
+            Arrays.asList(execucaoCarroTransp)
         );
 
         noPlanoOrcamentarios.addAll(Arrays.asList(
@@ -181,15 +194,15 @@ public class DataMock {
             Arrays.asList());
         UnidadeOrcamentaria uniPRODEST = new UnidadeOrcamentaria(28203l, "PRODEST", 
             Arrays.asList( planoEsDigital ), 
-            Arrays.asList()
+            Arrays.asList( execucaoEsDigital )
         );
         UnidadeOrcamentaria uniSEDU = new UnidadeOrcamentaria(42101l, "SEDU", 
             Arrays.asList( planoEsDigital ), 
-            Arrays.asList()
+            Arrays.asList( execucaoEsDigital )
         );
         UnidadeOrcamentaria uniSEDURB = new UnidadeOrcamentaria(36101l, "SEDURB", 
             Arrays.asList( planoDrenagem ), 
-            Arrays.asList()
+            Arrays.asList( execucaoMacrodrenagem )
         );
 
         UnidadeOrcamentaria uniSECULT = new UnidadeOrcamentaria(40101l, "SECULT",
@@ -210,15 +223,15 @@ public class DataMock {
 
         UnidadeOrcamentaria uniSESPORT = new UnidadeOrcamentaria(39101l, "SESPORT",
             Arrays.asList(planoCentroExce, planoConstrCampo),
-            Arrays.asList(execucaoConstrCampo2025F1));
+            Arrays.asList(execucaoConstrCampo2025F1, execucaoCentroExce));
 
         UnidadeOrcamentaria uniPROESPORTE = new UnidadeOrcamentaria(39901l, "PRÓ-ESPORTE",
             Arrays.asList(planoCentroExce),
-            Arrays.asList());
+            Arrays.asList(execucaoCentroExce));
 
         UnidadeOrcamentaria uniSEJUS = new UnidadeOrcamentaria(46101l, "SEJUS",
             Arrays.asList(planoGestaoBens, planoProjEspaciais, planoProjResso),
-            Arrays.asList(execucaoGestaoBens12025F1));
+            Arrays.asList(execucaoGestaoBens12025F1, execucaoProjetosEspaciais));
         
         UnidadeOrcamentaria uniPPES = new UnidadeOrcamentaria(46113l, "PPES",
             Arrays.asList(planoGestaoBens),
@@ -226,11 +239,11 @@ public class DataMock {
         
         UnidadeOrcamentaria uniIEMA = new UnidadeOrcamentaria(41201l, "IEMA",
             Arrays.asList(planoIEMA),
-            Arrays.asList());
+            Arrays.asList(execucaoIEMA));
 
         UnidadeOrcamentaria uniFUNDEMA = new UnidadeOrcamentaria(41901l, "FUNDEMA",
             Arrays.asList(planoIEMA),
-            Arrays.asList());
+            Arrays.asList(execucaoIEMA));
 
         UnidadeOrcamentaria uniFEADM = new UnidadeOrcamentaria(10906l, "FEADM", 
             Arrays.asList(planoNovoFundo), 
@@ -246,7 +259,7 @@ public class DataMock {
 
         UnidadeOrcamentaria uniSCM = new UnidadeOrcamentaria(10102l, "SCM",
             Arrays.asList(planoCarroTransp),
-            Arrays.asList());
+            Arrays.asList(execucaoCarroTransp));
 
         noUnidadeOrcamentarias.addAll(Arrays.asList(
             uniPCES, uniPMES, uniPCIES, uniFUNREBOM, uniSEDH, uniPRODEST, uniSEDU,
@@ -411,7 +424,7 @@ public class DataMock {
                 execucaoAquisicao2025F1, execucaoCais2025F1, execucaoObras2025F1,
                 execucaoModeResso2025F1, execucaoGestaoBens12025F1, execucaoGestaoBens22025F1,
                 execucaoGestaoEspaco12025F1, execucaoConstrCampo2025F1, execucaoNovoFundo2025F1,
-                execucaoCentroEvento2025F1, execucaoArcoViario2025F1
+                execucaoCentroEvento2025F1, execucaoArcoViario2025F1, execucaoEsDigital
             )
         );
         FonteOrcamentaria fonte2 = new FonteOrcamentaria("Fonte 2",

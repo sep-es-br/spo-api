@@ -1,6 +1,7 @@
 package br.gov.es.spo.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
@@ -12,7 +13,7 @@ public class Conta extends Entidade implements Serializable {
     private String status;
     private String nome;
 
-    private List<Objeto> objetosCusteadores;
-    private List<ExecucaoOrcamentaria> execucoesOrcamentariaDelimitadores;
+    private ArrayList<Objeto> objetosCusteadores = new ArrayList<>();
+    private ArrayList<ExecucaoOrcamentaria> execucoesOrcamentariaDelimitadores = new ArrayList<>();
 
 }

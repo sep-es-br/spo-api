@@ -32,7 +32,7 @@ public class TokenService {
                     .withSubject(userInfo.sub())
                     .withClaim("name", userInfo.apelido())
                     .withClaim("email", userInfo.email())
-                    // .withClaim("roles", new ArrayList<>(userInfo.role()) )
+                    .withClaim("roles", new ArrayList<>(userInfo.role()) )
                     .withExpiresAt(getDataExpiracao())
                     .sign(algoritmo);
         } catch (JWTCreationException exception) {
@@ -53,8 +53,8 @@ public class TokenService {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 
-    // public List<String> getRoleFromToken(String token) {
-    //     DecodedJWT decodedJWT = JWT.decode(token);
-    //     return decodedJWT.getClaim("roles").asList(String.class);
-    // }
+    public List<String> getRoleFromToken(String token) {
+        DecodedJWT decodedJWT = JWT.decode(token);
+        return decodedJWT.getClaim("roles").asList(String.class);
+    }
 }

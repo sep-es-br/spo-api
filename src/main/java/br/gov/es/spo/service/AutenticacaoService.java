@@ -44,15 +44,33 @@ public class AutenticacaoService {
         try {
             ACUserInfoDto userInfoDto;
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.body().contains("role\":\"")) {
-                userInfoDto = new ACUserInfoDto(new ObjectMapper().readValue(response.body(), ACUserInfoDtoStringRole.class));
-            } else {
-                userInfoDto = new ObjectMapper().readValue(response.body(), ACUserInfoDto.class);
+
+            userInfoDto = new ObjectMapper().readValue(response.body(), ACUserInfoDto.class);
+
+            if(userInfoDto.role().size() == 0) {
+                throw new UsuarioSemPermissaoException();
             }
 
-            // if (userInfoDto.role() == null || userInfoDto.role().isEmpty()) {
-            //     throw new UsuarioSemPermissaoException();
-            // }
+            return userInfoDto;
+        } catch (InterruptedException | IOException e) {
+            logger.error(e.getMessage());
+            Thread.currentThread().interrupt();
+        }
+        throw new InfoplanServiceException(List.of("Não foi possível identificar um usuário no acesso cidadão com esse token. Faça login novamente!"));
+    }
+
+    protected ACUserInfoDto getUserPermissions(String accessToken) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://acessocidadao.es.gov.br/is/connect/userinfo"))
+                .header("Authorization", "Bearer " + accessToken)
+                .build();
+
+        HttpClient client = HttpClient.newHttpClient();
+        try {
+            ACUserInfoDto userInfoDto;
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            userInfoDto = new ObjectMapper().readValue(response.body(), ACUserInfoDto.class);
 
             return userInfoDto;
         } catch (InterruptedException | IOException e) {

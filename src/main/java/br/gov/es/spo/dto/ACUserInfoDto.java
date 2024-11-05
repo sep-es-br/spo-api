@@ -4,6 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import br.gov.es.spo.dto.desserializer.ACUserInfoDtoDeserializer;
+
+@JsonDeserialize(using = ACUserInfoDtoDeserializer.class)
 public record ACUserInfoDto(
         String apelido,
         Boolean cpfValidado,

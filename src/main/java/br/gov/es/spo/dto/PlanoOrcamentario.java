@@ -1,6 +1,7 @@
 package br.gov.es.spo.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
@@ -16,8 +17,8 @@ public class PlanoOrcamentario implements Serializable{
     private String nome;
     private String descricao;
 
-    private List<ExecucaoOrcamentaria> execucoesOrcamentariaOrientadas;
-    private List<UnidadeOrcamentaria> unidadesOrcamentariaControladoras;
+    private ArrayList<ExecucaoOrcamentaria> execucoesOrcamentariaOrientadas = new ArrayList<>();
+    private ArrayList<UnidadeOrcamentaria> unidadesOrcamentariaControladoras = new ArrayList<>();
 
     public PlanoOrcamentario(Long codigo, String nome, List<ExecucaoOrcamentaria> execucoes) {
         this.codigo = codigo;

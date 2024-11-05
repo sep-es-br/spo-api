@@ -9,7 +9,8 @@ public class InvestimentoService {
     
 
     public InvestimentoService(){
-        DataMock.popularMock();
+        if(!DataMock.populado) DataMock.popularMock();
     }
+
 
 }
