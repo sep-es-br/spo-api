@@ -1,5 +1,6 @@
 package br.gov.es.spo.dto;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -613,6 +614,234 @@ public class DataMock {
         List<ExecucaoOrcamentaria> execucoesProjResso = ExecucaoOrcamentaria.gerarExecucoes(planoProjResso, invProjResso);
         List<ExecucaoOrcamentaria> execucoesArcoViario = ExecucaoOrcamentaria.gerarExecucoes(planoArcoViario, invArcoViario);
         List<ExecucaoOrcamentaria> execucoesCarroTransp = ExecucaoOrcamentaria.gerarExecucoes(planoCarroTransp, invCarroTransp);
+
+        // incluir as execuções nas contas/investimento
+
+        invAquisicaoDeFrotas.setExecucoesOrcamentariaDelimitadores(execucoesAquisicao);
+        invEsDigital.setExecucoesOrcamentariaDelimitadores(execucoesEsDigital);
+        invMacrodrenagem.setExecucoesOrcamentariaDelimitadores(execucoesMacrodrenagem);
+
+        invCaisArtes.setExecucoesOrcamentariaDelimitadores(execucoesCaisArte);
+
+        invSinalizacoes.setExecucoesOrcamentariaDelimitadores(execucoesSinalizacao);
+
+        invObras.setExecucoesOrcamentariaDelimitadores(execucoesObras);
+
+        invCentroExce.setExecucoesOrcamentariaDelimitadores(execucoesConstCentroExce);
+
+        invModeResso.setExecucoesOrcamentariaDelimitadores(execucoesModerResso);
+
+        invGestaoBens.setExecucoesOrcamentariaDelimitadores(execucoesGestaoBens);
+
+        invIEMA.setExecucoesOrcamentariaDelimitadores(execucoesIEMA);
+
+        invGestaoEspaco.setExecucoesOrcamentariaDelimitadores(execucoesGestaoEspaco);
+
+        invProjetosEspaciais.setExecucoesOrcamentariaDelimitadores(execucoesProjEspaciais);
+
+        invConstrCampo.setExecucoesOrcamentariaDelimitadores(execucoesConstrCampo);
+
+        invNovoFundo.setExecucoesOrcamentariaDelimitadores(execucoesNovoFundo);
+
+        invCentroEvento.setExecucoesOrcamentariaDelimitadores(execucoesCentroEventos);
+
+        invProjResso.setExecucoesOrcamentariaDelimitadores(execucoesProjResso);
+
+        invArcoViario.setExecucoesOrcamentariaDelimitadores(execucoesArcoViario);
+        
+        invCarroTransp.setExecucoesOrcamentariaDelimitadores(execucoesCarroTransp);
+
+        // gerar custo e objeto a partir da conta e unidade
+        Custo custoAquisicaoPCES = gerarCustoComObjeto("AQUISIÇÃO DE FROTAS", "Entrega", uniPCES, invAquisicaoDeFrotas);
+        Custo custoAquisicaoPMES = gerarCustoComObjeto("Aquisição de frota", "Entrega", uniPMES, invAquisicaoDeFrotas);
+        Custo custoAquisicaoPCIES = gerarCustoComObjeto("AQUISIÇÃO DE FROTAS", "Entrega", uniPCIES, invAquisicaoDeFrotas);
+        Custo custoAquisicaoFUNREBOM = gerarCustoComObjeto("AQUISIÇÃO DE FROTA", "Entrega", uniFUNREBOM, invAquisicaoDeFrotas);
+        Custo custoAquisicaoSEDH = gerarCustoComObjeto("AQUISIÇÃO DE VEÍCULOS SUV - IASES", "Entrega", uniSEDH, invAquisicaoDeFrotas);
+        Custo custoESDigitalPRODEST = gerarCustoComObjeto("ES DIGITAL", "Projeto", uniPRODEST, invEsDigital);
+        Custo custoESDigitalSEDU = gerarCustoComObjeto("ES DIGITAL", "Projeto", uniSEDU, invEsDigital);
+        Custo custoMacrodrenagemSEDURB = gerarCustoComObjeto("EXECUÇÃO DAS OBRAS DE MACRODRENAGEM DA BACIA DO CÓRREGO RIBEIRA.", "Entrega", uniSEDURB, invMacrodrenagem);
+        Custo custoCaisSECULT = gerarCustoComObjeto("Cais das Artes", "Projeto", uniSECULT, invCaisArtes);
+        Custo custoSinalizacaoDERES = gerarCustoComObjeto("IMPLANTAÇÃO, MANUTENÇÃO E GERENCIAMENTO DOS SISTEMAS DE SINALIZAÇÕES DAS RODOVIAS ESTADUAIS - DER-ES", "Entrega", uniDERES, invSinalizacoes);
+        Custo custoObrasSEAG = gerarCustoComObjeto("Obras e Supervisão do Caminhos do Campo", "Entrega", uniSEAG, invObras);
+        Custo custoObrasFEAC = gerarCustoComObjeto("Obras e Supervisão do Caminhos do Campo", "Entrega", uniFEAC, invObras);
+        Custo custoCentroExceSESPORT = gerarCustoComObjeto("CONSTRUÇÃO DO CENTRO DE EXCELÊNCIA DE ESPORTES PARA PESSOAS COM DEFICIÊNCIAS", "Entrega", uniSESPORT, invCentroExce);
+        Custo custoCentroExcePROESPORTE = gerarCustoComObjeto("CONSTRUÇÃO DO CENTRO DE EXCELÊNCIA DE ESPORTES PARA PESSOAS COM DEFICIÊNCIAS", "Entrega", uniPROESPORTE, invCentroExce);
+        Custo custoModerRessoSEDH = gerarCustoComObjeto("MODERNIZAÇÃO DO PROCESSO DE RESSOCIALIZAÇÃO", "Projeto", uniSEDH, invModeResso);
+        Custo custoGestaoBensSEJUS = gerarCustoComObjeto("GESTÃO DE BENS PATRIMONIAIS", "Projeto", uniSEJUS, invGestaoBens);
+        Custo custoGestaoBensPPES = gerarCustoComObjeto("GESTÃO DE BENS PATRIMONIAIS", "Projeto", uniPPES, invGestaoBens);
+        Custo custoIemaIEMA = gerarCustoComObjeto("IEMA DIGITAL", "Projeto", uniIEMA, invIEMA);
+        Custo custoIemaFUNDEMA = gerarCustoComObjeto("IMPLANTAÇÃO E ESTRUTURAÇÃO DE SERVIÇOS DIGITAIS", "Projeto", uniFUNDEMA, invIEMA);
+        Custo custoGestaoEspacoSECULT = gerarCustoComObjeto("GESTÃO ESPAÇOS CULTURAIS E SEDE SECULT", "Projeto", uniSECULT, invGestaoEspaco);
+        Custo custoProjEspeciaisSECULT = gerarCustoComObjeto("PROJETOS ESPECIAIS DO CONTRATO DE GESTÃO", "Projeto", uniSECULT, invProjetosEspaciais);
+        Custo custoConstCampoSESPORT = gerarCustoComObjeto("CONSTRUÇÃO DE CAMPO BOM DE BOLA", "Projeto", uniSESPORT, invConstrCampo);
+        Custo custoNovoFundoFEADM = gerarCustoComObjeto("NOVO FUNDO CIDADES", "Projeto", uniFEADM, invNovoFundo);
+        Custo custoCentroEventosSEAG = gerarCustoComObjeto("CENTRO DE EVENTOS DO MORANGÃO - DOMINGOS MARTINS", "Entrega", uniSEAG, invCentroEvento);
+        Custo custoProjetoRessoSEJUS = gerarCustoComObjeto("PROJETOS DE RESSOCIALIZAÇÃO", "Projeto", uniSEJUS, invProjResso);
+        Custo custoProjetoRessoFTP = gerarCustoComObjeto("PROJETOS DE RESSOCIALIZAÇÃO", "Projeto", uniFTP, invProjResso);
+        Custo custoProjetoRessoFUNPEN = gerarCustoComObjeto("PROJETOS DE RESSOCIALIZAÇÃO", "Projeto", uniFUNPEN, invProjResso);
+        Custo custoArcoViarioDERES = gerarCustoComObjeto("ARCO VIÁRIO DE COLATINA COM 4º PONTE", "Entrega", uniDERES, invArcoViario);
+        Custo custoCarroTransSCM = gerarCustoComObjeto("CARRO DE TRANSPORTE DE AERONAVES", "Entrega", uniSCM, invCarroTransp);
+
+        FonteOrcamentaria fonte1 = FonteOrcamentaria.criar(1l, "Fonte 1");
+        FonteOrcamentaria fonte2 = FonteOrcamentaria.criar(2l, "Fonte 2");
+
+        //setar valores custo
+
+        Custo.findOrCreate("2025", custoAquisicaoPCES)
+             .setValores(26000000, 26000000, fonte1);
+        Custo.findOrCreate("2026", custoAquisicaoPCES)
+             .setValores(26000000, 0, fonte1);
+        Custo.findOrCreate("2027", custoAquisicaoPCES)
+             .setValores(26000000, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoAquisicaoPMES)
+            .setValores(80250000, 0, fonte1);
+        Custo.findOrCreate("2026", custoAquisicaoPMES)
+            .setValores(82250000, 0, fonte1);
+        Custo.findOrCreate("2027", custoAquisicaoPMES)
+            .setValores(72000000, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoAquisicaoPCIES)
+            .setValores(6000000, 0, fonte1);
+        Custo.findOrCreate("2026", custoAquisicaoPCIES)
+            .setValores(6000000, 0, fonte1);
+        Custo.findOrCreate("2027", custoAquisicaoPCIES)
+            .setValores(6000000, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoAquisicaoFUNREBOM)
+            .setValores(13823773.48, 0, fonte1);
+        Custo.findOrCreate("2026", custoAquisicaoFUNREBOM)
+            .setValores(19023774.48, 0, fonte1);
+        Custo.findOrCreate("2027", custoAquisicaoFUNREBOM)
+            .setValores(13587775.48, 0, fonte1);
+            
+        Custo.findOrCreate("2025", custoMacrodrenagemSEDURB)
+        .setValores(109915909.28, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoCaisSECULT)
+        .setValores(74633732.98, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoSinalizacaoDERES)
+        .setValores(50000000, 50000000, fonte2);
+        Custo.findOrCreate("2026", custoSinalizacaoDERES)
+        .setValores(50000000, 50000000, fonte2);
+        Custo.findOrCreate("2027", custoSinalizacaoDERES)
+        .setValores(50000000, 50000000, fonte2);
+
+        Custo.findOrCreate("2025", custoObrasSEAG)
+        .setValores(8994010.17, 0, fonte1);
+        Custo.findOrCreate("2026", custoObrasSEAG)
+        .setValores(3800000, 0, fonte1);
+        Custo.findOrCreate("2027", custoObrasSEAG)
+        .setValores(3800000, 0, fonte1);
+
+        Custo.findOrCreate("2025", custoCentroExceSESPORT)
+        .setValores(2476310.12, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoCentroExcePROESPORTE)
+        .setValores(1159032.68, 1159032.68, fonte2);
+        
+        Custo.findOrCreate("2025", custoGestaoBensSEJUS)
+        .setValores(2500000, 0, fonte1);
+        Custo.findOrCreate("2026", custoGestaoBensSEJUS)
+        .setValores(2500000, 0, fonte1);
+        Custo.findOrCreate("2027", custoGestaoBensSEJUS)
+        .setValores(2500000, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoGestaoBensPPES)
+        .setValores(1895541.16, 0, fonte1);
+        Custo.findOrCreate("2026", custoGestaoBensPPES)
+        .setValores(1263694.11, 0, fonte1);
+        Custo.findOrCreate("2027", custoGestaoBensPPES)
+        .setValores(1263694.11, 0, fonte1);
+
+        Custo.findOrCreate("2025", custoGestaoEspacoSECULT)
+        .setValores(2000000, 0, fonte1);
+        Custo.findOrCreate("2026", custoGestaoEspacoSECULT)
+        .setValores(2000000, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoProjEspeciaisSECULT)
+        .setValores(2344000, 0, fonte1);
+        Custo.findOrCreate("2026", custoProjEspeciaisSECULT)
+        .setValores(2344000, 0, fonte1);
+        Custo.findOrCreate("2027", custoProjEspeciaisSECULT)
+        .setValores(2344000, 0, fonte1);
+        
+        Custo.findOrCreate("2025", custoConstCampoSESPORT)
+        .setValores(12673860.73, 30000000, fonte1);
+        Custo.findOrCreate("2025", custoConstCampoSESPORT)
+        .setValores(500000, 500000, fonte2);
+        Custo.findOrCreate("2026", custoConstCampoSESPORT)
+        .setValores(0, 15000000, fonte1);
+        Custo.findOrCreate("2027", custoConstCampoSESPORT)
+        .setValores(0, 25000000, fonte1);
+        
+        Custo.findOrCreate("2025", custoNovoFundoFEADM)
+        .setValores(12526388.07, 12526388.07, fonte1);
+        Custo.findOrCreate("2026", custoNovoFundoFEADM)
+        .setValores(240000000, 0, fonte1);
+        Custo.findOrCreate("2027", custoNovoFundoFEADM)
+        .setValores(240000000, 0, fonte1);
+
+        Custo.findOrCreate("2025", custoArcoViarioDERES)
+        .setValores(1243665.16, 1243665.16, fonte1);
+
+        Custo.findOrCreate("2025", custoCarroTransSCM)
+        .setValores(250000, 0, fonte1);
+
+        // setar valors das execucoes
+        ExecucaoOrcamentaria.findOrCreate("2025", planoAquisicaoFrota, uniPMES, invAquisicaoDeFrotas)
+            .setValores(4377049, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoAquisicaoFrota, uniFUNREBOM, invAquisicaoDeFrotas)
+            .setValores(2400000, 0, null, fonte2);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoCaisArtes, uniSECULT, invCaisArtes)
+            .setValores(216000000, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoSinalizacao, uniDERES, invSinalizacoes)
+            .setValores(34800000, 0, null, fonte2);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoObras, uniSEAG, invObras)
+            .setValores(372481632, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoModeResso, uniSEDH, invModeResso)
+            .setValores(2111050, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoGestaoBens, uniSEJUS, invGestaoBens)
+            .setValores(14663926, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoGestaoBens, uniPPES, invGestaoBens)
+            .setValores(645671, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoGestaoEspaco, uniSECULT, invGestaoEspaco)
+            .setValores(3900000, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoConstrCampo, uniSESPORT, invConstrCampo)
+            .setValores(50000, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoNovoFundo, uniFEADM, invNovoFundo)
+            .setValores(24750000, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoCentroEventos, uniSEAG, invCentroEvento)
+            .setValores(708000, 0, null, fonte1);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoProjResso, uniFUNPEN, invProjResso)
+            .setValores(390000, 0, null, fonte2);
+
+        ExecucaoOrcamentaria.findOrCreate("2025", planoArcoViario, uniDERES, invArcoViario)
+            .setValores(250000, 0, null, fonte1);
+        
+    }
+
+    private static Custo gerarCustoComObjeto(String nomeObj, String tipo, UnidadeOrcamentaria unidadeOrcamentaria, Conta conta){
+        Objeto objeto = Objeto.criar(nomeObj, tipo, conta);
+        
+        String ano = String.valueOf(LocalDate.now().getYear());
+        
+        Custo custo = Custo.criar(ano, unidadeOrcamentaria, objeto);
+
+        return custo;
 
     }
 

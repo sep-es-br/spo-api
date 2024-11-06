@@ -52,6 +52,13 @@ public class ExecucaoOrcamentaria extends Entidade implements Serializable {
         this.unidadeOrcamentariaImplementadora = uo;
     }
 
+    public void setValores(double orcamento, double autorizado, double[] liquidado, FonteOrcamentaria fonte){
+        this.orcamento = orcamento;
+        this.autorizado = autorizado;
+        this.liquidado = liquidado == null ? new double[12] : liquidado;
+        this.fonteOrcamentariaVinculadora = fonte;
+    }
+
     public static List<ExecucaoOrcamentaria> gerarExecucoes(PlanoOrcamentario po, Conta conta){
         ArrayList<ExecucaoOrcamentaria> execucoes = new ArrayList<>();
         String ano = String.valueOf(LocalDate.now().getYear()+1);
@@ -67,8 +74,24 @@ public class ExecucaoOrcamentaria extends Entidade implements Serializable {
         ExecucaoOrcamentaria novo = new ExecucaoOrcamentaria(ano, po, uo, conta);
         DataMock.noExecucaoOrcamentarias.add(novo);
         return novo;
+    }
 
-
+    public static ExecucaoOrcamentaria findOrCreate(String ano, PlanoOrcamentario po, UnidadeOrcamentaria uo, Conta conta){
+        List<ExecucaoOrcamentaria> result = DataMock.noExecucaoOrcamentarias.stream()
+            .filter(exec -> {
+                return exec.anoExercicio.equals(ano)
+                    && exec.planoOrcamentarioOrientador.equals(po)
+                    && exec.unidadeOrcamentariaImplementadora.equals(uo)
+                    && exec.contaDelimitada.equals(conta);
+            }).toList();
+        
+        if(result.isEmpty()) {
+            ExecucaoOrcamentaria nova = criar(ano, po, uo, conta);
+            ((ArrayList<ExecucaoOrcamentaria>) conta.getExecucoesOrcamentariaDelimitadores()).add(nova);
+            return nova;
+        } else {
+            return result.get(0);
+        }
     }
 
 }

@@ -2,7 +2,6 @@ package br.gov.es.spo.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
@@ -34,6 +33,12 @@ public class Objeto extends Entidade implements Serializable {
         this.nome = nome;
         this.tipo = tipo;
         this.contaCusteada = contaCusteada;
+    }
+
+    public static Objeto criar(String nome, String tipo, Conta conta){
+        Objeto novo = new Objeto(nome, tipo, conta);
+        DataMock.noObjetos.add(novo);
+        return novo;
     }
 
 }

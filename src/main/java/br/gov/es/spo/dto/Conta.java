@@ -1,7 +1,6 @@
 package br.gov.es.spo.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.neo4j.core.schema.Node;
@@ -19,9 +18,9 @@ public class Conta extends Entidade implements Serializable {
     private String nome;
 
     @Relationship(type = "CUSTEADO", direction = Direction.INCOMING)
-    private ArrayList<Objeto> objetosCusteadores = new ArrayList<>();
+    private List<Objeto> objetosCusteadores;
 
     @Relationship(type = "DELIMITA", direction = Direction.INCOMING)
-    private ArrayList<ExecucaoOrcamentaria> execucoesOrcamentariaDelimitadores = new ArrayList<>();
+    private List<ExecucaoOrcamentaria> execucoesOrcamentariaDelimitadores;
 
 }

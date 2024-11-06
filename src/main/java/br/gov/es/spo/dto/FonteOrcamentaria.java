@@ -2,7 +2,6 @@ package br.gov.es.spo.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.data.neo4j.core.schema.Id;
@@ -42,31 +41,13 @@ public class FonteOrcamentaria implements Serializable {
         execucoes.forEach(this.execucoesOrcamentariaVinculadas::add);
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-        return result;
+    public static FonteOrcamentaria criar(Long codigo, String nome){
+        FonteOrcamentaria novo = new FonteOrcamentaria();
+        novo.codigo = codigo;
+        novo.nome = nome;
+        DataMock.noFonteOrcamentarias.add(novo);
+        return novo;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        FonteOrcamentaria other = (FonteOrcamentaria) obj;
-        if (codigo == null) {
-            if (other.codigo != null)
-                return false;
-        } else if (!codigo.equals(other.codigo))
-            return false;
-        return true;
-    }
-
     
 
 }
