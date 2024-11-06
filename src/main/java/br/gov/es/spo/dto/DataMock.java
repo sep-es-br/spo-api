@@ -416,7 +416,7 @@ public class DataMock {
             custoArcoViario2025F1, custoCarroTransp2025F1
         ));
 
-        FonteOrcamentaria fonte1 = new FonteOrcamentaria(0l,"Fonte 1",
+        FonteOrcamentaria fonte1 = new FonteOrcamentaria("0","Fonte 1",
             Arrays.asList(
                 custoObj12025, custoObj22025, custoObj32025, custoObj42025,
                 custoObj12026, custoObj22026, custoObj32026, custoObj42026,
@@ -438,7 +438,7 @@ public class DataMock {
                 execucaoCentroEvento2025F1, execucaoArcoViario2025F1, execucaoEsDigital
             )
         );
-        FonteOrcamentaria fonte2 = new FonteOrcamentaria(1l, "Fonte 2",
+        FonteOrcamentaria fonte2 = new FonteOrcamentaria("1", "Fonte 2",
             Arrays.asList( 
                 custoObjImpl2025, custoObjImpl2026, custoObjImpl2027, custoCentroExce22025F2,
                 custoConstrCampo2025F2
@@ -682,8 +682,8 @@ public class DataMock {
         Custo custoArcoViarioDERES = gerarCustoComObjeto("ARCO VIÁRIO DE COLATINA COM 4º PONTE", "Entrega", uniDERES, invArcoViario);
         Custo custoCarroTransSCM = gerarCustoComObjeto("CARRO DE TRANSPORTE DE AERONAVES", "Entrega", uniSCM, invCarroTransp);
 
-        FonteOrcamentaria fonte1 = FonteOrcamentaria.criar(1l, "Fonte 1");
-        FonteOrcamentaria fonte2 = FonteOrcamentaria.criar(2l, "Fonte 2");
+        FonteOrcamentaria fonte1 = FonteOrcamentaria.criar("1", "Fonte 1");
+        FonteOrcamentaria fonte2 = FonteOrcamentaria.criar("2", "Fonte 2");
 
         //setar valores custo
 

@@ -9,12 +9,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UnidadeOrcamentariaDTO {
     
-    private Long id;
+    private String id;
     private String sigla;
 
 
     public UnidadeOrcamentariaDTO(UnidadeOrcamentaria unidade) {
-        this.id = unidade.getId();
+        this.id = unidade.getId() ;
         this.sigla = unidade.getSigla();
     }
 

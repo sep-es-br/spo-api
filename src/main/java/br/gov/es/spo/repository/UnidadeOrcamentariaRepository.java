@@ -4,6 +4,6 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 import br.gov.es.spo.dto.UnidadeOrcamentaria;
 
-public interface UnidadeOrcamentariaRepository extends Neo4jRepository<UnidadeOrcamentaria, Long> {
+public interface UnidadeOrcamentariaRepository extends Neo4jRepository<UnidadeOrcamentaria, String> {
     
 }

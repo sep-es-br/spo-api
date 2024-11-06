@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.gov.es.spo.dto.Custo;
 import br.gov.es.spo.dto.DataMock;
 import br.gov.es.spo.dto.ExecucaoOrcamentaria;
+import br.gov.es.spo.exception.BatataException;
 import br.gov.es.spo.repository.CustoRepository;
 
 @Service

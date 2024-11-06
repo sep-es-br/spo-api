@@ -17,10 +17,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Node
-public class FonteOrcamentaria implements Serializable {
+public class FonteOrcamentaria extends Entidade implements Serializable {
 
-    @Id
-    private Long codigo;
     private String nome;
     private String descricao;
 
@@ -34,16 +32,16 @@ public class FonteOrcamentaria implements Serializable {
         this.nome = nome;
     }
 
-    public FonteOrcamentaria(Long codigo, String nome, List<Custo> custos, List<ExecucaoOrcamentaria> execucoes) {
-        this.codigo = codigo;
+    public FonteOrcamentaria(String codigo, String nome, List<Custo> custos, List<ExecucaoOrcamentaria> execucoes) {
+        this.setId(codigo);
         this.nome = nome;
         custos.forEach(this.custosIndicados::add);
         execucoes.forEach(this.execucoesOrcamentariaVinculadas::add);
     }
 
-    public static FonteOrcamentaria criar(Long codigo, String nome){
+    public static FonteOrcamentaria criar(String codigo, String nome){
         FonteOrcamentaria novo = new FonteOrcamentaria();
-        novo.codigo = codigo;
+        novo.setId(codigo);
         novo.nome = nome;
         DataMock.noFonteOrcamentarias.add(novo);
         return novo;

@@ -9,11 +9,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PlanoOrcamentarioDTO  {
     
-    private Long id;
+    private String id;
     private Long cod;
     
     public PlanoOrcamentarioDTO (PlanoOrcamentario plano){
-        this.id = plano.getId();
+        this.id = plano.getId() ;
         this.cod = plano.getCodigo();
     }
     

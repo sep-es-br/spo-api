@@ -40,12 +40,10 @@ public class InfosService {
         Set<String> anosCustoSet = new HashSet<>(anosCusto);
         Set<String> anosExecSet = new HashSet<>(anosExec);
 
-        ArrayList<String> todosAnos = new ArrayList<>(anosCustoSet);
+        HashSet<String> todosAnos = new HashSet<>(anosCustoSet);
         todosAnos.addAll(anosExecSet);
 
-        todosAnos.sort((s1, s2) -> s1.compareTo(s2));
-
-        return todosAnos;
+        return todosAnos.stream().sorted((s1, s2) -> s1.compareTo(s2)).toList();
     }
 
 

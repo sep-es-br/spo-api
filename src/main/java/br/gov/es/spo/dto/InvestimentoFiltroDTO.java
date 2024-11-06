@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class InvestimentoFiltroDTO {
     private String nome;
-    private Long codUnidade;
-    private Long codPO;
+    private String codUnidade;
+    private String codPO;
     private String exercicio;
 }

@@ -2,6 +2,7 @@ package br.gov.es.spo.dto;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.RelationshipId;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +11,8 @@ import lombok.Setter;
 @Setter
 public abstract class Entidade {
 
-    @Id @GeneratedValue
-    private Long id;
+    @RelationshipId @GeneratedValue
+    private String id;
 
       
     
