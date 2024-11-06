@@ -18,9 +18,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Node
-public class PlanoOrcamentario implements Serializable{
+public class PlanoOrcamentario extends Entidade implements Serializable{
     
-    @Id
     private Long codigo;
     private String nome;
     private String descricao;

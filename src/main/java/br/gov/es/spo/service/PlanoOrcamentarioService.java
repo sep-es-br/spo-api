@@ -18,4 +18,8 @@ public class PlanoOrcamentarioService {
         repository.saveAll(planos);
     }
 
+    public List<PlanoOrcamentario> getAll() {
+        return repository.findAll();
+    }
+
 }

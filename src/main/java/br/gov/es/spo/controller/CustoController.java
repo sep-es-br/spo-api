@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.es.spo.service.CustoService;
@@ -22,15 +23,15 @@ public class CustoController {
     private final CustoService service;
 
     @GetMapping("/totalPrevisto")
-    public ResponseEntity<Double> getTotalPrevisto() {
-        double totalPrevisto = service.totalPrevisto();
+    public ResponseEntity<Double> getTotalPrevisto(@RequestParam String exercicio) {
+        double totalPrevisto = service.totalPrevisto(exercicio);
 
         return ResponseEntity.ok(totalPrevisto);
     }
     
     @GetMapping("/totalHomologado")
-    public ResponseEntity<Double> getTotalHomologado() {
-        double totalHomologado = service.totalHomologado();
+    public ResponseEntity<Double> getTotalHomologado(@RequestParam String exercicio) {
+        double totalHomologado = service.totalHomologado(exercicio);
 
         return ResponseEntity.ok(totalHomologado);
     }

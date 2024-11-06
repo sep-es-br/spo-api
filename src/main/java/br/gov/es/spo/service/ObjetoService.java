@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.gov.es.spo.dto.DataMock;
 import br.gov.es.spo.dto.Objeto;
+import br.gov.es.spo.dto.ObjetoFiltroDTO;
 import br.gov.es.spo.repository.ObjetoRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class ObjetoService {
         repository.saveAll(objetos);
     }
 
-    public List<Objeto> getAll() {
-        return DataMock.noObjetos;
+    public List<Objeto> getAllByFilter(ObjetoFiltroDTO filtroDTO) {
+        return repository.getAllByFilter(filtroDTO.getExercicio(), filtroDTO.getNome());
     }
 }

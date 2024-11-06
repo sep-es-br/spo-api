@@ -1,6 +1,8 @@
 package br.gov.es.spo.controller;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import br.gov.es.spo.dto.InvestimentoDTO;
+import br.gov.es.spo.dto.InvestimentoFiltroDTO;
 import br.gov.es.spo.service.InvestimentoService;
 import lombok.RequiredArgsConstructor;
 
@@ -22,12 +27,22 @@ public class InvestimentoController {
 
     private final InvestimentoService service;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<InvestimentoDTO>> getTotalPrevisto(@RequestParam(required = false) String filtroJson) {
-        List<InvestimentoDTO> investimentosDTO = service.findAllByFilter().stream()
-                .map(inv -> new InvestimentoDTO(inv)).toList();
+    private final Logger logger = Logger.getLogger("InvestimentoController");
 
-        return ResponseEntity.ok(investimentosDTO);
+    @GetMapping("/all")
+    public ResponseEntity<List<InvestimentoDTO>> getTotalPrevisto(@RequestParam String filtroJson) {
+        try {
+            InvestimentoFiltroDTO filtroDTO = new ObjectMapper().readValue(filtroJson, InvestimentoFiltroDTO.class);
+
+            List<InvestimentoDTO> investimentosDTO = service.findAllByFilter(filtroDTO).stream()
+                .map(inv -> new InvestimentoDTO(inv)).toList();
+            return ResponseEntity.ok(investimentosDTO);
+        } catch (Exception e){
+            logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
+            return ResponseEntity.internalServerError().build();
+        }
+
+        
     }
     
 }

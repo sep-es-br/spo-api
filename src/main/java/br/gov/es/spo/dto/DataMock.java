@@ -837,7 +837,7 @@ public class DataMock {
     private static Custo gerarCustoComObjeto(String nomeObj, String tipo, UnidadeOrcamentaria unidadeOrcamentaria, Conta conta){
         Objeto objeto = Objeto.criar(nomeObj, tipo, conta);
         
-        String ano = String.valueOf(LocalDate.now().getYear());
+        String ano = String.valueOf(LocalDate.now().getYear()+1);
         
         Custo custo = Custo.criar(ano, unidadeOrcamentaria, objeto);
 

@@ -21,13 +21,11 @@ public class CustoService {
         repository.saveAll(custos);
     }
 
-    public double totalPrevisto(){
+    public double totalPrevisto(String exercicio){
 
         double totalPrevisto = 0;
 
-        List<Custo> custosAno = DataMock.noCustos.stream()
-                .filter(custo -> custo.getAnoExercicio().equals("2025"))
-                .collect(Collectors.toList());
+        List<Custo> custosAno = repository.findByExercicio(exercicio);
 
         for (Custo custo : custosAno) {
             totalPrevisto += custo.getPrevisto();
@@ -37,13 +35,11 @@ public class CustoService {
 
     }
 
-    public double totalHomologado(){
+    public double totalHomologado(String exercicio){
 
         double totalPrevisto = 0;
 
-        List<Custo> custosAno = DataMock.noCustos.stream()
-                .filter(custo -> custo.getAnoExercicio().equals("2025"))
-                .collect(Collectors.toList());
+        List<Custo> custosAno = repository.findByExercicio(exercicio);
 
         for (Custo custo : custosAno) {
             totalPrevisto += custo.getContratado();

@@ -1,5 +1,6 @@
 package br.gov.es.spo.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Node
-public class UnidadeOrcamentaria {
+public class UnidadeOrcamentaria extends Entidade implements Serializable {
     
-    @Id
     private Long codigo;
     private String sigla;
     private String nome;

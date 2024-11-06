@@ -18,4 +18,8 @@ public class UnidadeOrcamentariaService {
         repository.saveAll(unidades);
     }
 
+    public List<UnidadeOrcamentaria> getAll() {
+        return repository.findAll();
+    }
+
 }

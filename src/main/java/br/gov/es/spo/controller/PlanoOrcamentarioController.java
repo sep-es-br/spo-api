@@ -14,40 +14,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.gov.es.spo.dto.InvestimentoDTO;
-import br.gov.es.spo.dto.Objeto;
 import br.gov.es.spo.dto.ObjetoDTO;
 import br.gov.es.spo.dto.ObjetoFiltroDTO;
-import br.gov.es.spo.service.InvestimentoService;
+import br.gov.es.spo.dto.PlanoOrcamentario;
+import br.gov.es.spo.dto.PlanoOrcamentarioDTO;
 import br.gov.es.spo.service.ObjetoService;
+import br.gov.es.spo.service.PlanoOrcamentarioService;
 import lombok.RequiredArgsConstructor;
 
 @CrossOrigin(origins = "${frontend.host}")
 @RestController
-@RequestMapping("/objeto")
+@RequestMapping("/plano")
 @RequiredArgsConstructor
-public class ObjetoController {
+public class PlanoOrcamentarioController {
 
     @Value("${frontend.host}")
     private String frontHost;
 
-    private final Logger logger = Logger.getLogger("ObjetoController");
+    private final Logger logger = Logger.getLogger("PlanoOrcamentarioController");
 
-    private final ObjetoService service;
+    private final PlanoOrcamentarioService service;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ObjetoDTO>> getAllByFiltro(@RequestParam String filtroJson) {
+    public ResponseEntity<List<PlanoOrcamentarioDTO>> getAllByFiltro() {
 
-        try{
-            ObjetoFiltroDTO filtroDTO = new ObjectMapper().readValue(filtroJson, ObjetoFiltroDTO.class);
+        List<PlanoOrcamentarioDTO> planosDTO = service.getAll().stream().map(plano -> new PlanoOrcamentarioDTO(plano)).toList();
 
-            List<ObjetoDTO> objetosDTO = service.getAllByFilter(filtroDTO).stream().map(obj -> new ObjetoDTO(obj)).toList();
-
-            return ResponseEntity.ok(objetosDTO);
-        } catch(Exception e){
-            logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-            return ResponseEntity.internalServerError().build();
-        }
+        return ResponseEntity.ok(planosDTO);
+        
 
     }
     
