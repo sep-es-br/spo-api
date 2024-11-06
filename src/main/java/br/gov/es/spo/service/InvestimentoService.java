@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.gov.es.spo.dto.DataMock;
 import br.gov.es.spo.dto.Investimento;
 import br.gov.es.spo.repository.InvestimentoRepository;
 
@@ -20,7 +19,7 @@ public class InvestimentoService {
         repository.saveAll(investimentos);
     }
 
-    public List<Investimento> getAll() {
-        return DataMock.noInvestimentos;
+    public List<Investimento> findAllByFilter() {
+        return repository.findAllByFilter();
     }
 }

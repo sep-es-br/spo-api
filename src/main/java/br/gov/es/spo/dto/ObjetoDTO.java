@@ -22,7 +22,7 @@ public class ObjetoDTO {
 
         this.nome = objeto.getNome();
         this.tipo = objeto.getTipo();
-        UnidadeOrcamentaria unidade = objeto.getContaCusteada().getExecucoesOrcamentariaDelimitadores().get(0).getUnidadeOrcamentariaImplementadora();
+        UnidadeOrcamentaria unidade = objeto.getCustosEstimadores().get(0).getUnidadeOrcamentariaInformadora();
         this.unidadeResponsavel = unidade.getCodigo() + " - " + unidade.getSigla();
 
         this.totalPrevisto = 0d;
