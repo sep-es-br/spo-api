@@ -3,6 +3,7 @@ package br.gov.es.spo.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.gov.es.spo.model.Investimento;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

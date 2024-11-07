@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 
-import br.gov.es.spo.dto.Custo;
+import br.gov.es.spo.model.Custo;
 
 public interface CustoRepository extends Neo4jRepository<Custo, String> {
     

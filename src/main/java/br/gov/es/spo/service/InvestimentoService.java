@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.gov.es.spo.dto.Investimento;
 import br.gov.es.spo.dto.InvestimentoFiltroDTO;
+import br.gov.es.spo.model.Investimento;
 import br.gov.es.spo.repository.InvestimentoRepository;
 
 @Service

@@ -9,12 +9,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.gov.es.spo.dto.Conta;
-import br.gov.es.spo.dto.DataMock;
-import br.gov.es.spo.dto.ExecucaoOrcamentaria;
-import br.gov.es.spo.dto.Investimento;
-import br.gov.es.spo.dto.PlanoOrcamentario;
-import br.gov.es.spo.dto.UnidadeOrcamentaria;
+import br.gov.es.spo.model.Conta;
+import br.gov.es.spo.model.DataMock;
+import br.gov.es.spo.model.ExecucaoOrcamentaria;
+import br.gov.es.spo.model.Investimento;
+import br.gov.es.spo.model.PlanoOrcamentario;
+import br.gov.es.spo.model.UnidadeOrcamentaria;
 import br.gov.es.spo.repository.ExecucaoOrcamentariaRepository;
 
 @Service

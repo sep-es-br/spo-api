@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.gov.es.spo.dto.DataMock;
+import br.gov.es.spo.model.DataMock;
 import br.gov.es.spo.service.CustoService;
 import br.gov.es.spo.service.ExecucaoOrcamentariaService;
 import br.gov.es.spo.service.FonteOrcamentariaService;

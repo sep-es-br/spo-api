@@ -16,8 +16,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.gov.es.spo.dto.ObjetoDTO;
 import br.gov.es.spo.dto.ObjetoFiltroDTO;
-import br.gov.es.spo.dto.PlanoOrcamentario;
 import br.gov.es.spo.dto.PlanoOrcamentarioDTO;
+import br.gov.es.spo.model.PlanoOrcamentario;
 import br.gov.es.spo.service.ObjetoService;
 import br.gov.es.spo.service.PlanoOrcamentarioService;
 import lombok.RequiredArgsConstructor;

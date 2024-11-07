@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.gov.es.spo.dto.Custo;
-import br.gov.es.spo.dto.DataMock;
-import br.gov.es.spo.dto.ExecucaoOrcamentaria;
 import br.gov.es.spo.exception.BatataException;
+import br.gov.es.spo.model.Custo;
+import br.gov.es.spo.model.DataMock;
+import br.gov.es.spo.model.ExecucaoOrcamentaria;
 import br.gov.es.spo.repository.CustoRepository;
 
 @Service
@@ -18,8 +18,18 @@ public class CustoService {
     @Autowired
     private CustoRepository repository;
 
+    private ObjetoService objetoService;
+
     public void saveAll(List<Custo> custos) {
         repository.saveAll(custos);
+    }
+
+    public List<Custo> getAllByExercicio(String exercicio){
+        return repository.findByExercicio(exercicio);
+    }
+
+    public void hidratarObjetoEstimado(Custo custo) {
+        custo.setObjetoEstimado(this.objetoService.getByCusto(custo));
     }
 
     public double totalPrevisto(String exercicio){

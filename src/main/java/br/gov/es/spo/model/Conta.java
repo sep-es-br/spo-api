@@ -1,4 +1,4 @@
-package br.gov.es.spo.dto;
+package br.gov.es.spo.model;
 
 import java.io.Serializable;
 import java.util.List;

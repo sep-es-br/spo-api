@@ -1,4 +1,4 @@
-package br.gov.es.spo.dto;
+package br.gov.es.spo.model;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;

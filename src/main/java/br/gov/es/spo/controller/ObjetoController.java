@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.gov.es.spo.dto.InvestimentoDTO;
-import br.gov.es.spo.dto.Objeto;
 import br.gov.es.spo.dto.ObjetoDTO;
 import br.gov.es.spo.dto.ObjetoFiltroDTO;
+import br.gov.es.spo.model.Objeto;
 import br.gov.es.spo.service.InvestimentoService;
 import br.gov.es.spo.service.ObjetoService;
 import lombok.RequiredArgsConstructor;

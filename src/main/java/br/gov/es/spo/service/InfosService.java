@@ -9,9 +9,9 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.gov.es.spo.dto.Custo;
-import br.gov.es.spo.dto.ExecucaoOrcamentaria;
-import br.gov.es.spo.dto.PlanoOrcamentario;
+import br.gov.es.spo.model.Custo;
+import br.gov.es.spo.model.ExecucaoOrcamentaria;
+import br.gov.es.spo.model.PlanoOrcamentario;
 import br.gov.es.spo.repository.CustoRepository;
 import br.gov.es.spo.repository.ExecucaoOrcamentariaRepository;
 import br.gov.es.spo.repository.PlanoOrcamentarioRepository;

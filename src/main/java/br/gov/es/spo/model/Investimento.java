@@ -1,4 +1,4 @@
-package br.gov.es.spo.dto;
+package br.gov.es.spo.model;
 
 import org.bouncycastle.util.test.FixedSecureRandom.Data;
 import org.springframework.data.neo4j.core.schema.Node;

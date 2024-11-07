@@ -1,4 +1,4 @@
-package br.gov.es.spo.dto;
+package br.gov.es.spo.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

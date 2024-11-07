@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.es.spo.dto.PlanoOrcamentarioDTO;
-import br.gov.es.spo.dto.UnidadeOrcamentaria;
 import br.gov.es.spo.dto.UnidadeOrcamentariaDTO;
+import br.gov.es.spo.model.UnidadeOrcamentaria;
 import br.gov.es.spo.service.PlanoOrcamentarioService;
 import br.gov.es.spo.service.UnidadeOrcamentariaService;
 import lombok.RequiredArgsConstructor;

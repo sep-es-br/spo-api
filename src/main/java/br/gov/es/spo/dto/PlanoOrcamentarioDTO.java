@@ -1,5 +1,6 @@
 package br.gov.es.spo.dto;
 
+import br.gov.es.spo.model.PlanoOrcamentario;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

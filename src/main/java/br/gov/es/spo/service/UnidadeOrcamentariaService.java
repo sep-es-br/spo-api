@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.gov.es.spo.dto.UnidadeOrcamentaria;
+import br.gov.es.spo.model.UnidadeOrcamentaria;
 import br.gov.es.spo.repository.UnidadeOrcamentariaRepository;
 
 @Service
