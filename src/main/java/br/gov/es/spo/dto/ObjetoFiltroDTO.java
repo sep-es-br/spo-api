@@ -10,4 +10,6 @@ import lombok.Setter;
 public class ObjetoFiltroDTO {
     private String exercicio;
     private String nome;
+    private String unidadeId;
+    private String status;
 }

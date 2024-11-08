@@ -22,7 +22,7 @@ public class ObjetoService {
     }
 
     public List<Objeto> getAllByFilter(ObjetoFiltroDTO filtroDTO) {
-        return repository.getAllByFilter(filtroDTO.getExercicio(), filtroDTO.getNome());
+        return repository.getAllByFilter(filtroDTO.getExercicio(), filtroDTO.getNome(), filtroDTO.getUnidadeId(), filtroDTO.getStatus());
     }
 
     public Objeto getByCusto(Custo custo){
